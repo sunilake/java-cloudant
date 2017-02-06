@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "PUT",
+    "urlPattern": "/db/[^/]+"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "id": "{{request.path.[1]}}",
+      "ok": true,
+      "rev": "1-abc"
+    },
+    "transformers": ["response-template"],
+    "headers": {
+      "Content-Type": "text/plain"
+    }
+  }
+}

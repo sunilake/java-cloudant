@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "POST",
+    "urlPattern": "/db"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "id": "{{request.query.rev}}",
+      "ok": true,
+      "rev": "1-abc"
+    },
+    "transformers": ["response-template"],
+    "headers": {
+      "Content-Type": "text/plain"
+    }
+  }
+}

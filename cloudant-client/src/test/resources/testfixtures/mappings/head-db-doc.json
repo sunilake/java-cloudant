@@ -1,0 +1,14 @@
+{
+  "request": {
+    "method": "HEAD",
+    "urlPattern": "/db/[^/]+"
+  },
+  "response": {
+    "status": 200,
+    "transformers": ["response-template"],
+    "headers": {
+      "Content-Type": "text/plain",
+      "ETag": "1-abc"
+    }
+  }
+}

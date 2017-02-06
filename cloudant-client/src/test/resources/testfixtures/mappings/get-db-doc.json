@@ -1,0 +1,20 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPattern": "/db/[^/]+"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "_id": "{{request.path.[1]}}",
+      "_rev": "1-abc",
+      "fields": {
+        "hello":"world"
+      }
+    },
+    "transformers": ["response-template"],
+    "headers": {
+      "Content-Type": "text/plain"
+    }
+  }
+}
