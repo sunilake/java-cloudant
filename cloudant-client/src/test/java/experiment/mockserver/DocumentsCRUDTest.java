@@ -47,7 +47,7 @@ public class DocumentsCRUDTest {
 
     @Before
     public void setUp() throws IOException {
-        account = ClientBuilder.url(new URL("http://localhost:"+wireMockRule.port())).build();
+        account = ClientBuilder.url(new URL("http://localhost:"+wireMockRule.port()+"/")).build();
         List<StubMapping> mappings = wireMockRule.getStubMappings();
 
         db = account.database("db", false);
@@ -89,7 +89,8 @@ public class DocumentsCRUDTest {
     @Test
     @Category(RequiresCouch.class)
     public void findAny() {
-        String uri = account.getBaseUri() + "_stats";
+        // TODO slash on stats?
+        String uri = account.getBaseUri() + "/_stats";
         JsonObject jsonObject = db.findAny(JsonObject.class, uri);
         assertNotNull(jsonObject);
     }
