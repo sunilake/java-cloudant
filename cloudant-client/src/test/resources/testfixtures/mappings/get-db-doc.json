@@ -6,7 +6,7 @@
   "response": {
     "status": 200,
     "jsonBody": {
-      "_id": "{{request.path.[1]}}",
+      "_id": "{{#if request.path.[3]}}{{request.path.[1]}}/{{request.path.[2]}}/{{request.path.[3]}}{{else if request.path.[2]}}{{request.path.[1]}}/{{request.path.[2]}}{{else}}{{request.path.[1]}}{{/if}}",
       "_rev": "1-abc",
       "fields": {
         "hello":"world"

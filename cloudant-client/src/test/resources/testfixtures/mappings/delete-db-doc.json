@@ -6,7 +6,7 @@
   "response": {
     "status": 200,
     "jsonBody": {
-      "id": "{{request.path.[1]}}",
+      "id": "{{#if request.path.[3]}}{{request.path.[1]}}/{{request.path.[2]}}/{{request.path.[3]}}{{else if request.path.[2]}}{{request.path.[1]}}/{{request.path.[2]}}{{else}}{{request.path.[1]}}{{/if}}",
       "ok": true,
       "rev": "2-def"
     },

@@ -15,6 +15,7 @@ import com.cloudant.client.org.lightcouch.NoDocumentException;
 import com.cloudant.test.main.RequiresCouch;
 import com.cloudant.tests.Bar;
 import com.cloudant.tests.Foo;
+import com.github.tomakehurst.wiremock.common.ConsoleNotifier;
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
 import com.github.tomakehurst.wiremock.extension.responsetemplating.ResponseTemplateTransformer;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
@@ -39,7 +40,7 @@ import java.util.UUID;
 public class DocumentsCRUDTest {
 
     @Rule
-    public WireMockRule wireMockRule = new WireMockRule(new WireMockConfiguration().dynamicPort().dynamicHttpsPort().usingFilesUnderDirectory("cloudant-client/src/test/resources/testfixtures").extensions(new ResponseTemplateTransformer(false)));
+    public WireMockRule wireMockRule = new WireMockRule(new WireMockConfiguration().dynamicPort().dynamicHttpsPort().usingFilesUnderDirectory("cloudant-client/src/test/resources/testfixtures").extensions(new ResponseTemplateTransformer(false)).notifier(new ConsoleNotifier(true)));
     // TODO custom client which overrides getBaseUri?
     public CloudantClient account;
     public Database db;
@@ -125,8 +126,6 @@ public class DocumentsCRUDTest {
         boolean found = db.contains(response.getId());
         assertTrue(found);
 
-        found = db.contains(generateUUID());
-        assertFalse(found);
     }
 
     // Save
